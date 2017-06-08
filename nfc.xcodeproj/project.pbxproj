@@ -14,6 +14,8 @@
 		8CA2B33B1EE9517F009D6F65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CA2B3391EE9517F009D6F65 /* LaunchScreen.storyboard */; };
 		8CA2B3461EE9517F009D6F65 /* nfcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B3451EE9517F009D6F65 /* nfcTests.swift */; };
 		8CA2B3511EE9517F009D6F65 /* nfcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B3501EE9517F009D6F65 /* nfcUITests.swift */; };
+		8CA2B3641EE953A0009D6F65 /* NFCScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2B3631EE953A0009D6F65 /* NFCScanner.swift */; };
+		8CCD803D1EE9999B0066DB11 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCD803C1EE9999B0066DB11 /* ExternalAccessory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,11 @@
 		8CA2B34C1EE9517F009D6F65 /* nfcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nfcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA2B3501EE9517F009D6F65 /* nfcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nfcUITests.swift; sourceTree = "<group>"; };
 		8CA2B3521EE9517F009D6F65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CA2B35F1EE95231009D6F65 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		8CA2B3631EE953A0009D6F65 /* NFCScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCScanner.swift; sourceTree = "<group>"; };
+		8CA2B3671EE96652009D6F65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8CCD803C1EE9999B0066DB11 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		8CCD803E1EE9999B0066DB11 /* nfc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nfc.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCD803D1EE9999B0066DB11 /* ExternalAccessory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +85,12 @@
 		8CA2B3241EE9517F009D6F65 = {
 			isa = PBXGroup;
 			children = (
+				8CA2B3671EE96652009D6F65 /* README.md */,
 				8CA2B32F1EE9517F009D6F65 /* nfc */,
 				8CA2B3441EE9517F009D6F65 /* nfcTests */,
 				8CA2B34F1EE9517F009D6F65 /* nfcUITests */,
 				8CA2B32E1EE9517F009D6F65 /* Products */,
+				8CA2B35E1EE95231009D6F65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,8 +107,10 @@
 		8CA2B32F1EE9517F009D6F65 /* nfc */ = {
 			isa = PBXGroup;
 			children = (
+				8CCD803E1EE9999B0066DB11 /* nfc.entitlements */,
 				8CA2B3301EE9517F009D6F65 /* AppDelegate.swift */,
 				8CA2B3321EE9517F009D6F65 /* ViewController.swift */,
+				8CA2B3631EE953A0009D6F65 /* NFCScanner.swift */,
 				8CA2B3341EE9517F009D6F65 /* Main.storyboard */,
 				8CA2B3371EE9517F009D6F65 /* Assets.xcassets */,
 				8CA2B3391EE9517F009D6F65 /* LaunchScreen.storyboard */,
@@ -123,6 +135,15 @@
 				8CA2B3521EE9517F009D6F65 /* Info.plist */,
 			);
 			path = nfcUITests;
+			sourceTree = "<group>";
+		};
+		8CA2B35E1EE95231009D6F65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CCD803C1EE9999B0066DB11 /* ExternalAccessory.framework */,
+				8CA2B35F1EE95231009D6F65 /* CoreNFC.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +214,12 @@
 				TargetAttributes = {
 					8CA2B32C1EE9517F009D6F65 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
 					};
 					8CA2B3401EE9517F009D6F65 = {
 						CreatedOnToolsVersion = 9.0;
@@ -258,6 +285,7 @@
 			files = (
 				8CA2B3331EE9517F009D6F65 /* ViewController.swift in Sources */,
 				8CA2B3311EE9517F009D6F65 /* AppDelegate.swift in Sources */,
+				8CA2B3641EE953A0009D6F65 /* NFCScanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +447,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = nfc/nfc.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4F3EA6B935;
 				INFOPLIST_FILE = nfc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.asapps.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -433,11 +465,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = nfc/nfc.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4F3EA6B935;
 				INFOPLIST_FILE = nfc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.asapps.nfc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -524,6 +560,7 @@
 				8CA2B3571EE9517F009D6F65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CA2B3581EE9517F009D6F65 /* Build configuration list for PBXNativeTarget "nfcTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +569,7 @@
 				8CA2B35A1EE9517F009D6F65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CA2B35B1EE9517F009D6F65 /* Build configuration list for PBXNativeTarget "nfcUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +578,7 @@
 				8CA2B35D1EE9517F009D6F65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
